@@ -18,6 +18,7 @@ class PlantumlService < Formula
 
   def plist;
     port = 1608
+    graphvizDot = `which dot`.strip
     <<-EOS.undent
       <?xml version="1.0" encoding="UTF-8"?>
       <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
@@ -31,6 +32,7 @@ class PlantumlService < Formula
           <array>
             <string>#{HOMEBREW_PREFIX}/bin/plantuml-service</string>
             <string>#{port}</string>
+            <string>#{graphvizDot}</string>
           </array>
           <key>EnvironmentVariables</key>
           <dict>
@@ -40,9 +42,9 @@ class PlantumlService < Formula
           <key>WorkingDirectory</key>
           <string>#{var}</string>
           <key>StandardErrorPath</key>
-          <string>#{var}/log/stderr.log</string>
+          <string>#{var}/log/plantuml-server/stderr.log</string>
           <key>StandardOutPath</key>
-          <string>#{var}/log/stdout.log</string>
+          <string>#{var}/log/plantuml-server/stdout.log</string>
         </dict>
       </plist>
     EOS
