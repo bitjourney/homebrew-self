@@ -1,0 +1,43 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+# Update formulate for homebrew-self
+
+require 'json'
+require 'digest'
+
+FORMULAE = [
+  {
+    name: "plantuml-service.rb",
+    repository: "bitjourney/plantuml-service",
+  }
+]
+
+TAGS_TEMPLATE = "https://api.github.com/repos/:repository/tags"
+TGZ_TEMPLATE = "https://github.com/:repository/archive/:tag.tar.gz"
+
+def req(url)
+  puts %{curl -L "#{url}"}
+  `curl -L "#{url}"`
+end
+
+FORMULAE.each do |formula|
+  api_tags = TAGS_TEMPLATE
+             .gsub(/:repository\b/, formula[:repository])
+
+  tags = JSON.parse(req(api_tags), symbolize_names: true)
+
+  tarball_url = TGZ_TEMPLATE
+                .gsub(/:repository\b/, formula[:repository])
+                .gsub(/:tag\b/, tags[0][:name])
+
+  sha256 = Digest::SHA256.hexdigest(req(tarball_url))
+
+  puts %{url "#{tarball_url}"}
+  puts %{sha256 "#{sha256}"}
+
+  content = File.read(formula[:name])
+                .gsub(/^(\s+url) .+/, %{\\1 "#{tarball_url}"})
+                .gsub(/^(\s+sha256) .+/, %{\\1 "#{sha256}"})
+  File.write(formula[:name], content)
+end
