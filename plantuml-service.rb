@@ -1,4 +1,3 @@
-
 class PlantumlService < Formula
   desc "PlantUML HTTP service"
   homepage "https://github.com/gfx/plantuml-service"
@@ -30,7 +29,7 @@ class PlantumlService < Formula
           <string>#{plist_name}</string>
           <key>ProgramArguments</key>
           <array>
-            <string>#{HOMEBREW_PREFIX}/bin/plantuml-service</string>
+            <string>#{bin}/plantuml-service</string>
             <string>#{port}</string>
             <string>#{graphvizDot}</string>
           </array>
@@ -40,11 +39,11 @@ class PlantumlService < Formula
           <key>RunAtLoad</key>
           <true/>
           <key>WorkingDirectory</key>
-          <string>#{var}</string>
+          <string>#{var}/plantuml-service</string>
           <key>StandardErrorPath</key>
-          <string>#{var}/log/plantuml-server/stderr.log</string>
+          <string>stderr.log</string>
           <key>StandardOutPath</key>
-          <string>#{var}/log/plantuml-server/stdout.log</string>
+          <string>stdout.log</string>
         </dict>
       </plist>
     EOS
