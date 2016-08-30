@@ -39,11 +39,11 @@ class PlantumlService < Formula
           <key>RunAtLoad</key>
           <true/>
           <key>WorkingDirectory</key>
-          <string>#{var}/plantuml-service</string>
+          <string>#{var}</string>
           <key>StandardErrorPath</key>
-          <string>stderr.log</string>
+          <string>#{var}/log/plantuml-service.log</string>
           <key>StandardOutPath</key>
-          <string>stdout.log</string>
+          <string>#{var}/log/plantuml-service.log</string>
         </dict>
       </plist>
     EOS
