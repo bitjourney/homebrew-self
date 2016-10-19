@@ -18,6 +18,14 @@ curl :1608/version
 
 * https://github.com/bitjourney/plantuml-service
 
+## Maintainance
+
+The following command updates folumae.
+
+```
+tools/update
+```
+
 # Maintainers
 
 Bit Journey, Inc.
