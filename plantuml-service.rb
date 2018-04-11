@@ -2,8 +2,8 @@ class PlantumlService < Formula
   desc "PlantUML HTTP service"
   homepage "https://github.com/gfx/plantuml-service"
 
-  url "https://github.com/bitjourney/plantuml-service/archive/v1.3.0.tar.gz"
-  sha256 "9c14918355520dfc100e61786aa03aae73f89135778e83f04ba9d65475a745e4"
+  url "https://github.com/bitjourney/plantuml-service/archive/v1.3.1.tar.gz"
+  sha256 "22758fc600ecfd3e802695b273216cf168d346c8a2e080b682f5028766d4a2ae"
 
   depends_on :java
   depends_on "graphviz"
