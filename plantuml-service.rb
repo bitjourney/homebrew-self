@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PlantumlService < Formula
   desc "PlantUML HTTP service"
   homepage "https://github.com/gfx/plantuml-service"
@@ -18,7 +20,7 @@ class PlantumlService < Formula
   def plist;
     port = 1608
     graphvizDot = `which dot`.strip
-    <<-EOS.undent
+    <<~EOS
       <?xml version="1.0" encoding="UTF-8"?>
       <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
       <plist version="1.0">
